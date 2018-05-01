@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grab Results</title>
+</head>
+<body>
+    <form method='post'>{% csrf_token %}
+        <select name="marhala">
+            {% for k, v in marhala.items %}
+                <option value='{{ k }}'>{{ v }}</option>
+            {% endfor %}
+        </select>
+        <select name="exam_year">
+            {% for k, v in exam_years.items %}
+                <option value='{{ k }}'>{{ v }}</option>
+            {% endfor %}
+        </select>
+
+        <input type='text' name='start' placeholder="start">
+        <input type='text' name='end' placeholder="end">
+        <input type="submit" value="grab">
+    </form>
+</body>
+</html>

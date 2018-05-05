@@ -1,0 +1,6 @@
+{
+	"deploy": {
+		"module":"befaq_bot.wsgi:application",
+		"managetasks":["migrate", "createsuperuser_automatic"]
+	}
+}

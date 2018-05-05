@@ -26,12 +26,23 @@ class Result(models.Model):
     student_marhala = models.IntegerField(default=1, choices=MARHALA)
     exam_year = models.IntegerField(default=2018, choices=EXAM_YEARS)
 
-    result_json = models.TextField(null=True, blank=True)
+    result = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return "roll: {}, marhala:{}, year: {}".format(self.student_roll, 
                                                         self.student_marhala, 
                                                         self.exam_year)
 
+    class Meta:
+        ordering = ['-student_roll', 'student_marhala', '-exam_year']
 
+
+class Proxy(models.Model):
+    ip = models.TextField()
+
+    def __str__(self):
+        return "id: {}, ip: {}".format(self.id, self.ip)
+
+    class Meta:
+        ordering = ['-id']
 

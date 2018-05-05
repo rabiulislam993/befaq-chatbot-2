@@ -1,0 +1,14 @@
+beautifulsoup4==4.6.0
+bs4==0.0.1
+certifi==2018.4.16
+chardet==3.0.4
+Django==2.0.4
+idna==2.6
+ply==3.11
+pyjsparser==2.5.2
+PySocks==1.6.8
+pytz==2018.4
+requests==2.18.4
+slimit==0.8.1
+SocksiPy-branch==1.1
+urllib3==1.22

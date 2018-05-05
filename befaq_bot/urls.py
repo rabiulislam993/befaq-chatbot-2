@@ -24,4 +24,5 @@ urlpatterns = [
 
     path('', views.get_result, name='get_result'),
     path('grab_results', views.grab_results, name='grab_results'),
+    path('grab_proxies', views.grab_proxies, name='grab_proxies'),
 ]

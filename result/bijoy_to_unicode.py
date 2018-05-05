@@ -412,17 +412,6 @@ def reArrangeUnicodeConvertedText(str_):
 
     return str_
 
-
-# main conversion function
-def convertBijoyToUnicode(srcString):
-    global preConversionMap, conversionMap, postConversionMap
-    srcString = doCharMap(srcString, preConversionMap)
-    srcString = doCharMap(srcString, conversionMap)
-    srcString = reArrangeUnicodeConvertedText(srcString)
-    srcString = doCharMap(srcString, postConversionMap)
-    return srcString
-
-
 def doCharMap(text, charMap):
     for k, v in charMap.items():
         pattern = "@{}@".format(k)
@@ -441,3 +430,37 @@ def mbCharAt(s, i):
 # returns the javascript 'substring' method equivalent
 def subString(string, from_, to):
     return mb_substr(string, from_, to - from_)
+
+
+def refactor_broken_kars(s):
+    a = []
+    for i in range(len(s)):
+        a.append(s[i])
+
+    b = a[:]
+    for i in range(len(a)):
+        if a[i] == 'ি':
+            b[i] = b[i+1]
+            b[i+1] = 'ি'
+        elif a[i] == 'ৈ':
+            b[i] = b[i+1]
+            b[i+1] = 'ৈ'
+        elif a[i] == 'ে':
+            b[i] = b[i + 1]
+            b[i + 1] = 'ে'
+
+    return ''.join(b)
+
+
+# main conversion function
+def convertBijoyToUnicode(srcString):
+    global preConversionMap, conversionMap, postConversionMap
+    srcString = doCharMap(srcString, preConversionMap)
+    srcString = doCharMap(srcString, conversionMap)
+    srcString = reArrangeUnicodeConvertedText(srcString)
+    srcString = doCharMap(srcString, postConversionMap)
+
+    srcString = refactor_broken_kars(srcString)
+    return srcString
+
+

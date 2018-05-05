@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta name="csrf-token" content="eyzaotdKH4AzWxz1ymXMTTIGqRErFSGC4hCdm3KO">
+    <meta name="csrf-token" content="rFgxQBScGNYaEUxyXWTYD4tKmDd2Nkci3FXg4lmf">
     <meta name="robots" content="noindex">
     <title>বেফাকুল মাদারিসিল আরাবিয়া বাংলাদেশ । পরিক্ষার ফলাফল</title>
 <meta name="viewport"
@@ -673,33 +673,33 @@
         }
 
         var result = {
-            'eyLvix 1g': '48',
-            'gymwjg 1g': '62',
-            'wZiwghx 1g': '58',
-            'Avey `vD`': '81',
-            'eyLvix 2q': '63',
-            'gymwjg 2q': '52',
-            'wZiwghx 2q': '43',
-            'bvmvC I Beby gvRvn': '58',
-            'Z¡nvex': '51',
-            'gyAvËvb': '72',
-            'wKivAvZ': '56'
+            'eyLvix 1g': '35',
+            'gymwjg 1g': '47',
+            'wZiwghx 1g': '37',
+            'Avey `vD`': '44',
+            'eyLvix 2q': '35',
+            'gymwjg 2q': '42',
+            'wZiwghx 2q': '51',
+            'bvmvC I Beby gvRvn': '63',
+            'Z¡nvex': '42',
+            'gyAvËvb': '54',
+            'wKivAvZ': '68'
         };
 
         var additional = {
-            'roll':496,
-            'alid': '3338',
-            'name': 'gynv: bRiæj Bmjvg',
-            'madrasa': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
-            'father': 'gynv: nvwmeyi ingvb',
-            'markaj': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
-            'birth': '22/08/1992',
-            'grade': 'Rvwq¨`',
+            'roll':519,
+            'alid': '741',
+            'name': '‡gvnv: Avey mvC`',
+            'madrasa': 'h‡kvi Rvwgqv Bmjvwgqv, Bmjvg bMi (ivgbMi), h‡kvi †KvZqvjx, h‡kvi, 1/395',
+            'father': '‡gvnv: Avikv` Avjx (wgwR)',
+            'markaj': 'h‡kvi Rvwgqv Bmjvwgqv, Bmjvg bMi (ivgbMi), h‡kvi †KvZqvjx, h‡kvi, 1/395',
+            'birth': '12/04/1992',
+            'grade': 'gvKeyj',
             'year': '2016',
             'marhala': 'ZvKgxj',
             'grace-num': '0',
             'grace-label': '',
-            'total-mark': '588',
+            'total-mark': '450',
             'position': ''
         };
 

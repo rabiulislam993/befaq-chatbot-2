@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta name="csrf-token" content="5U1yucPATCQv9zeeOpzY5Y0AVuXXHctBVga1eIfi">
+    <meta name="csrf-token" content="eyzaotdKH4AzWxz1ymXMTTIGqRErFSGC4hCdm3KO">
     <meta name="robots" content="noindex">
     <title>বেফাকুল মাদারিসিল আরাবিয়া বাংলাদেশ । পরিক্ষার ফলাফল</title>
 <meta name="viewport"
@@ -673,33 +673,33 @@
         }
 
         var result = {
-            'eyLvix 1g': '52',
-            'gymwjg 1g': '60',
-            'wZiwghx 1g': '65',
-            'Avey `vD`': '82',
-            'eyLvix 2q': '67',
-            'gymwjg 2q': '68',
-            'wZiwghx 2q': '55',
-            'bvmvC I Beby gvRvn': '70',
-            'Z¡nvex': '60',
-            'gyAvËvb': '79',
-            'wKivAvZ': '60'
+            'eyLvix 1g': '48',
+            'gymwjg 1g': '62',
+            'wZiwghx 1g': '58',
+            'Avey `vD`': '81',
+            'eyLvix 2q': '63',
+            'gymwjg 2q': '52',
+            'wZiwghx 2q': '43',
+            'bvmvC I Beby gvRvn': '58',
+            'Z¡nvex': '51',
+            'gyAvËvb': '72',
+            'wKivAvZ': '56'
         };
 
         var additional = {
-            'roll':436,
-            'alid': '3276',
-            'name': 'gynv: iæûj Avgxb',
+            'roll':496,
+            'alid': '3338',
+            'name': 'gynv: bRiæj Bmjvg',
             'madrasa': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
-            'father': 'gynv: †gvK‡k` Avjx',
+            'father': 'gynv: nvwmeyi ingvb',
             'markaj': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
-            'birth': '02/03/1995',
-            'grade': 'Rvwq¨` wRÏvb',
+            'birth': '22/08/1992',
+            'grade': 'Rvwq¨`',
             'year': '2016',
             'marhala': 'ZvKgxj',
             'grace-num': '0',
             'grace-label': '',
-            'total-mark': '658',
+            'total-mark': '588',
             'position': ''
         };
 

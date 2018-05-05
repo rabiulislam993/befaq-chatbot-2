@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta name="csrf-token" content="N65jvMmEz7IKPd8hWZhM3RnyOeIKCQnWtWN116mY">
+    <meta name="csrf-token" content="5U1yucPATCQv9zeeOpzY5Y0AVuXXHctBVga1eIfi">
     <meta name="robots" content="noindex">
     <title>বেফাকুল মাদারিসিল আরাবিয়া বাংলাদেশ । পরিক্ষার ফলাফল</title>
 <meta name="viewport"
@@ -673,34 +673,34 @@
         }
 
         var result = {
-            'eyLvix 1g': '82',
-            'gymwjg 1g': '77',
-            'wZiwghx 1g': '87',
+            'eyLvix 1g': '52',
+            'gymwjg 1g': '60',
+            'wZiwghx 1g': '65',
             'Avey `vD`': '82',
-            'eyLvix 2q': '85',
-            'gymwjg 2q': '89',
-            'wZiwghx 2q': '93',
-            'bvmvC I Beby gvRvn': '86',
-            'Z¡nvex': '90',
-            'gyAvËvb': '91',
-            'wKivAvZ': '92'
+            'eyLvix 2q': '67',
+            'gymwjg 2q': '68',
+            'wZiwghx 2q': '55',
+            'bvmvC I Beby gvRvn': '70',
+            'Z¡nvex': '60',
+            'gyAvËvb': '79',
+            'wKivAvZ': '60'
         };
 
         var additional = {
-            'roll':373,
-            'alid': '3469',
-            'name': 'gynv¤§v` gvneyeyi ingvb',
-            'madrasa': 'Kv‡mgyj Dj~g Bmjvwgqv gv`ivmv, Ry½yi`x, bMiKv›`v, dwi`cyi, 1/322',
-            'father': 'gynv¤§v` nvq`vi †kL',
-            'markaj': 'Kv‡mgyj Dj~g Bmjvwgqv gv`ivmv, Ry½yi`x, bMiKv›`v, dwi`cyi, 1/322',
-            'birth': '08/10/1990',
-            'grade': 'gygZvh',
+            'roll':436,
+            'alid': '3276',
+            'name': 'gynv: iæûj Avgxb',
+            'madrasa': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
+            'father': 'gynv: †gvK‡k` Avjx',
+            'markaj': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
+            'birth': '02/03/1995',
+            'grade': 'Rvwq¨` wRÏvb',
             'year': '2016',
             'marhala': 'ZvKgxj',
             'grace-num': '0',
             'grace-label': '',
-            'total-mark': '862',
-            'position': '27'
+            'total-mark': '658',
+            'position': ''
         };
 
 

@@ -108,7 +108,6 @@ def load_data(start, stop, exam_year, marhala):
         except Exception as e:
             error_count += 1
             print(e)
-            global proxy_dict
             reandom_proxy = random.choice(all_proxies)
             proxy_dict = {"http": reandom_proxy.ip}
             # raise

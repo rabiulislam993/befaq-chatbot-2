@@ -13,7 +13,7 @@ from .models import EXAM_YEARS, MARHALA, Result, Proxy
 from result.bijoy_to_unicode import convertBijoyToUnicode
 
 
-executor = ThreadPoolExecutor(10)
+executor = ThreadPoolExecutor(100)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
 

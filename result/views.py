@@ -101,9 +101,9 @@ def load_data(start, stop, exam_year, marhala):
             new_result = Result(student_roll=roll, student_marhala=marhala, exam_year=exam_year)
             new_result.result = result_string_for_save_in_db
             new_result.save()
-            print(new_result)
+            # print(new_result)
 
-            print('roll {} added to database'.format(roll))
+            print('result for roll {} added to database'.format(roll))
 
         except Exception as e:
             error_count += 1
@@ -121,11 +121,13 @@ def grab_proxies(request):
     try:
         for i in range(100):
             res = requests.get("http://pubproxy.com/api/proxy", headers=headers)
+            print(res.text)
             res = json.loads(res.text)
             proto = res['data'][0]['type']
-            if proto != 'http' or proto != 'https':
-                continue
             ip_port = res['data'][0]['ipPort']
+
+            if proto not in ["http", "https"]:
+                continue
 
             http_proxy = "{}://{}".format(proto, ip_port)
             p, c = Proxy.objects.get_or_create(ip=http_proxy)
@@ -133,6 +135,7 @@ def grab_proxies(request):
 
     except Exception as e:
         print(e)
+        raise
 
     return HttpResponse("Grabed")
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta name="csrf-token" content="rFgxQBScGNYaEUxyXWTYD4tKmDd2Nkci3FXg4lmf">
+    <meta name="csrf-token" content="1QlmAuOOENWRmkEt5IZAcYLnerI0rOQbvFXK7B3y">
     <meta name="robots" content="noindex">
     <title>বেফাকুল মাদারিসিল আরাবিয়া বাংলাদেশ । পরিক্ষার ফলাফল</title>
 <meta name="viewport"
@@ -557,9 +557,9 @@
         </div>
     </div>
     <p class="text-center"
-   style="font-family: 'Trebuchet MS', sans-serif; color: #0f5e7d;display: flex; justify-content: center; align-items: center;">
-    Developed by&nbsp;&nbsp;<a href="http://www.saharait.com" style="color: #0f5e7d;"><img style="height: 18px;"
-                                                                                           src="http://wifaqresult.com/resources/assets/images/sahara.svg">Sahara
+   style="color: #0f5e7d;display: flex; justify-content: center; align-items: center;">
+    ডেভেলপ করেছে&nbsp;&nbsp;<a href="http://www.saharait.com" style="color: #0f5e7d; font-family: 'Trebuchet MS', sans-serif;"><img style="height: 18px;"
+                                                                                           src="http://wifaqresult.com/resources/assets/images/sahara.svg"> Sahara
         IT</a></p>
 <p class="copyright">
     <small>© 2018
@@ -673,33 +673,33 @@
         }
 
         var result = {
-            'eyLvix 1g': '35',
-            'gymwjg 1g': '47',
-            'wZiwghx 1g': '37',
-            'Avey `vD`': '44',
-            'eyLvix 2q': '35',
-            'gymwjg 2q': '42',
-            'wZiwghx 2q': '51',
-            'bvmvC I Beby gvRvn': '63',
-            'Z¡nvex': '42',
-            'gyAvËvb': '54',
-            'wKivAvZ': '68'
+            'eyLvix 1g': '69',
+            'gymwjg 1g': '76',
+            'wZiwghx 1g': '85',
+            'Avey `vD`': '77',
+            'eyLvix 2q': '80',
+            'gymwjg 2q': '74',
+            'wZiwghx 2q': '66',
+            'bvmvC I Beby gvRvn': '75',
+            'Z¡nvex': '76',
+            'gyAvËvb': '83',
+            'wKivAvZ': '75'
         };
 
         var additional = {
-            'roll':519,
-            'alid': '741',
-            'name': '‡gvnv: Avey mvC`',
-            'madrasa': 'h‡kvi Rvwgqv Bmjvwgqv, Bmjvg bMi (ivgbMi), h‡kvi †KvZqvjx, h‡kvi, 1/395',
-            'father': '‡gvnv: Avikv` Avjx (wgwR)',
-            'markaj': 'h‡kvi Rvwgqv Bmjvwgqv, Bmjvg bMi (ivgbMi), h‡kvi †KvZqvjx, h‡kvi, 1/395',
-            'birth': '12/04/1992',
-            'grade': 'gvKeyj',
+            'roll':416,
+            'alid': '3257',
+            'name': '‡gvnv¤§v`yjøvn',
+            'madrasa': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
+            'father': 'gynv: Avjx AvKei',
+            'markaj': 'Rvwgqv gv`vwbqv evwiaviv, cøU 1/G,†ivW bs-1,eøK-†R, evwiaviv Av/G, evÇv, XvKv, 1/45',
+            'birth': '30/08/1996',
+            'grade': 'Rvwq¨` wRÏvb',
             'year': '2016',
             'marhala': 'ZvKgxj',
             'grace-num': '0',
             'grace-label': '',
-            'total-mark': '450',
+            'total-mark': '761',
             'position': ''
         };
 

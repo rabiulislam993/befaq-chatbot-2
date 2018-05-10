@@ -47,6 +47,9 @@ class Result(models.Model):
 class Proxy(models.Model):
     ip = models.TextField()
 
+    accepted = models.IntegerField(default=0)
+    ignored = models.IntegerField(default=0)
+
     def __str__(self):
         return "id: {}, ip: {}".format(self.id, self.ip)
 

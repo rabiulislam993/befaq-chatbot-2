@@ -1,5 +1,6 @@
 import re
 import json
+import time
 import random
 import requests
 from bs4 import BeautifulSoup as bs
@@ -13,52 +14,44 @@ from .models import EXAM_YEARS, MARHALA, Result, Proxy
 from result.bijoy_to_unicode import convertBijoyToUnicode
 
 
-executor = ThreadPoolExecutor(100)
+executor = ThreadPoolExecutor(10)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
 
-def load_data(start, stop, exam_year, marhala):
+def get_result_from_befaq_server(exam_year, marhala, roll):
     all_proxies = Proxy.objects.all()
-    # reandom_proxy = random.choice(all_proxies)
-    proxy_dict = None
-    print(proxy_dict)
 
-    error_count = 0
+    result_url = "http://wifaqresult.com/result/{year}/{marhala}/{roll}". \
+        format(year=exam_year, marhala=marhala, roll=roll)
+    # r = requests.get(result_url, headers=headers)
+    # random_proxy = ''
 
-    for roll in range(start, stop):
-        print('roll {} result grabbing'.format(roll))
+    random_proxy = random.choice(all_proxies)
+    proxy_dict = {"http": random_proxy.ip}
+
+    while True:
+        # while r.status_code != 200:
+        #     random_proxy = random.choice(all_proxies)
+        #     proxy_dict = {"http": random_proxy.ip}
+        #
+        #     r = requests.get(result_url, headers=headers, proxies=proxy_dict)
 
         try:
-            if error_count > 100:
-                break
+            # r = requests.get(result_url, headers=headers, proxies=proxy_dict)
+            #
+            # while r.status_code != 200:
+            #     random_proxy = random.choice(all_proxies)
+            #     proxy_dict = {"http": random_proxy.ip}
+            #     r = requests.get(result_url, headers=headers, proxies=proxy_dict)
 
-            if Result.objects.filter(student_roll=roll, student_marhala=marhala, exam_year=exam_year).exists():
-                continue
-
-            result_url = "http://wifaqresult.com/result/{year}/{marhala}/{roll}". \
-                format(year=exam_year, marhala=marhala, roll=roll)
-
-            r = requests.get(result_url, headers=headers, proxies=proxy_dict)
-            print('status code {}'.format(r.status_code))
-            while r.status_code != 200:
-                print('returned status code: {}'.format(r.status_code))
-                if r.status_code == 429:
-                    reandom_proxy = random.choice(all_proxies)
-                    proxy_dict = {"http": reandom_proxy.ip}
-                else:
-                    proxy_dict = None
-
-                r = requests.get(result_url, headers=headers, proxies=proxy_dict)
-                print('new status code {}'.format(r.status_code))
+            r = requests.get(result_url, headers=headers)
+            if r.status_code == 429:
+                time.sleep(60)
+                r = requests.get(result_url, headers=headers)
 
             r.encoding = 'utf-8'
-
             result = bs(r.text, "html.parser")
-
-            with open('test.txt', 'w') as f:
-                f.writelines(str(r.text))
-                f.close()
-
+            # print(r.text)
             result_in_js = result.find_all('script')[-1]
 
             pattern = re.compile(
@@ -87,30 +80,47 @@ def load_data(start, stop, exam_year, marhala):
             result_list.append("মেধা স্থানঃ {}".format(convertBijoyToUnicode(str(addition_info['position']))))
 
             result_string_for_save_in_db = '\n'.join(result_list)
-            # print(result_string_for_save_in_db)
 
             # replace a broken bangla!
             broken_word = 'জায়ি্যদ'
             correct_word = 'জায়্যিদ'
-            result_string_for_save_in_db = result_string_for_save_in_db.replace(broken_word, correct_word)
+            result_string = result_string_for_save_in_db.replace(broken_word, correct_word)
 
-            print('===================================================')
+            print("roll {} grabbed, using proxy: {}".format(roll, random_proxy))
+            random_proxy.accepted = random_proxy.accepted + 1
+            random_proxy.save()
+            return result_string
 
-            print('inserting result to database...')
+        except Exception as e:
+            # random_proxy.ignored = random_proxy.accepted + 1
+            # random_proxy.save()
+            print("exception in get_result_from_befaq_server")
+            print(e)
+
+
+def load_data(start, stop, exam_year, marhala):
+    error_count = 0
+    for roll in range(start, stop):
+        print('roll {} result grabbing'.format(roll))
+
+        try:
+            if error_count > 100:
+                break
+
+            if Result.objects.filter(student_roll=roll, student_marhala=marhala, exam_year=exam_year).exists():
+                continue
+
+            result_string = get_result_from_befaq_server(exam_year, marhala, roll)
 
             new_result = Result(student_roll=roll, student_marhala=marhala, exam_year=exam_year)
-            new_result.result = result_string_for_save_in_db
+            new_result.result = result_string
             new_result.save()
-            # print(new_result)
-
             print('result for roll {} added to database'.format(roll))
 
         except Exception as e:
             error_count += 1
+            print("exception in load_data")
             print(e)
-            reandom_proxy = random.choice(all_proxies)
-            proxy_dict = {"http": reandom_proxy.ip}
-            # raise
 
     if error_count > 100:
         print('data loading aborted due to more then 100 error')
@@ -153,7 +163,6 @@ def grab_results(request):
 
         if exam_year and marhala:
             executor.submit(load_data, start, stop, exam_year, marhala)
-            # load_data(start, stop, exam_year=exam_year, marhala=marhala)
         else:
             print('exam_year or marhala not provided')
 

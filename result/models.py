@@ -1,4 +1,3 @@
-import json
 from django.db import models
 
 
@@ -27,6 +26,14 @@ class Result(models.Model):
     exam_year = models.IntegerField(default=2018, choices=EXAM_YEARS)
 
     result = models.TextField(null=True, blank=True)
+
+    def as_json(self):
+        return {
+            "roll" : self.student_roll,
+            "marhala" : self.student_marhala,
+            "year" : self.exam_year,
+            "result" : self.result
+        }
 
     def __str__(self):
         return "roll: {}, marhala:{}, year: {}".format(self.student_roll, 

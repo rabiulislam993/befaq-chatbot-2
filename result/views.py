@@ -165,5 +165,23 @@ def grab_results(request):
     return render(request, 'result/grab_results.html', context)
 
 
-def get_result(request):
-    return JsonResponse({'hello': 'there'})
+def get_result(request, exam_year, marhala, roll):
+    try:
+        result = Result.objects.get(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
+        response = {
+            "status" : True,
+            "message" : "Succeess",
+            "data" : result.as_json()
+        }
+        return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
+
+    except Exception as e:
+        response = {
+            "status" : False,
+            "message" : str(e)
+        }
+    return JsonResponse(response, status=404)
+
+
+def index(request):
+    return HttpResponse("Its Working! ")

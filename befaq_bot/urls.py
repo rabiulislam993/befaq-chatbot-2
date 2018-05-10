@@ -22,7 +22,8 @@ from result import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.get_result, name='get_result'),
-    path('grab_results', views.grab_results, name='grab_results'),
-    path('grab_proxies', views.grab_proxies, name='grab_proxies'),
+    path('', views.index, name='index'),
+    path('<exam_year>/<marhala>/<roll>/', views.get_result, name='get_result'),
+    path('grab_results/', views.grab_results, name='grab_results'),
+    path('grab_proxies/', views.grab_proxies, name='grab_proxies'),
 ]

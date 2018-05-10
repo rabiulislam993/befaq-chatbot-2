@@ -87,7 +87,7 @@ def load_data(start, stop, exam_year, marhala):
             result_list.append("মেধা স্থানঃ {}".format(convertBijoyToUnicode(str(addition_info['position']))))
 
             result_string_for_save_in_db = '\n'.join(result_list)
-            print(result_string_for_save_in_db)
+            # print(result_string_for_save_in_db)
 
             # replace a broken bangla!
             broken_word = 'জায়ি্যদ'

@@ -30,20 +30,7 @@ def get_result_from_befaq_server(exam_year, marhala, roll):
     proxy_dict = {"http": random_proxy.ip}
 
     while True:
-        # while r.status_code != 200:
-        #     random_proxy = random.choice(all_proxies)
-        #     proxy_dict = {"http": random_proxy.ip}
-        #
-        #     r = requests.get(result_url, headers=headers, proxies=proxy_dict)
-
         try:
-            # r = requests.get(result_url, headers=headers, proxies=proxy_dict)
-            #
-            # while r.status_code != 200:
-            #     random_proxy = random.choice(all_proxies)
-            #     proxy_dict = {"http": random_proxy.ip}
-            #     r = requests.get(result_url, headers=headers, proxies=proxy_dict)
-
             r = requests.get(result_url, headers=headers)
             if r.status_code == 429:
                 time.sleep(60)
@@ -51,14 +38,17 @@ def get_result_from_befaq_server(exam_year, marhala, roll):
 
             r.encoding = 'utf-8'
             result = bs(r.text, "html.parser")
-            # print(r.text)
-            result_in_js = result.find_all('script')[-1]
-
-            pattern = re.compile(
-                "var result = (?P<result>{[\n\s\w\W':,`]*});\s*var additional = (?P<addition>{[\n\s\w\W':,`]*});")
-            result_regex = re.search(pattern, result_in_js.text)
-            result_info = eval(result_regex.group('result'))
-            addition_info = eval(result_regex.group('addition'))
+            try:
+                result_in_js = result.find_all('script')[-1]
+                pattern = re.compile(
+                    "var result = (?P<result>{[\n\s\w\W':,`]*});\s*var additional = (?P<addition>{[\n\s\w\W':,`]*});")
+                result_regex = re.search(pattern, result_in_js.text)
+                result_info = eval(result_regex.group('result'))
+                addition_info = eval(result_regex.group('addition'))
+            except Exception as e:
+                print("exception in result extracting")
+                print(e)
+                return None
 
             result_list = []
             result_list.append("রোলঃ  {}".format(convertBijoyToUnicode(str(addition_info['roll']))))
@@ -92,8 +82,6 @@ def get_result_from_befaq_server(exam_year, marhala, roll):
             return result_string
 
         except Exception as e:
-            # random_proxy.ignored = random_proxy.accepted + 1
-            # random_proxy.save()
             print("exception in get_result_from_befaq_server")
             print(e)
 
@@ -111,6 +99,8 @@ def load_data(start, stop, exam_year, marhala):
                 continue
 
             result_string = get_result_from_befaq_server(exam_year, marhala, roll)
+            if not result_string:
+                continue
 
             new_result = Result(student_roll=roll, student_marhala=marhala, exam_year=exam_year)
             new_result.result = result_string
@@ -185,22 +175,26 @@ def get_result(request, exam_year, marhala, roll):
     else:
         try:
             result_string = get_result_from_befaq_server(exam_year, marhala, roll)
-            new_result = Result(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
-            new_result.result = result_string
-            new_result.save()
+            if result_string:
+                new_result = Result(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
+                new_result.result = result_string
+                new_result.save()
 
-            response = {
-                "status": True,
-                "message": "grabbed from befaq server",
-                "data": new_result.as_json()
-            }
-            return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
+                response = {
+                    "status": True,
+                    "message": "grabbed from befaq server",
+                    "data": new_result.as_json()
+                }
+                return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
 
         except Exception as e:
-            response = {
-                "status" : False,
-                "message" : str(e)
-            }
+            print("exception in get result")
+            print(e)
+
+        response = {
+            "status" : False,
+            "message" : "no result found"
+        }
         return JsonResponse(response, status=404)
 
 

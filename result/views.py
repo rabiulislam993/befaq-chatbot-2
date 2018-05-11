@@ -145,9 +145,8 @@ def grab_proxies(request):
 
     except Exception as e:
         print(e)
-        raise
 
-    return HttpResponse("Grabed")
+    return HttpResponse("Grabbed")
 
 
 @login_required
@@ -175,21 +174,34 @@ def grab_results(request):
 
 
 def get_result(request, exam_year, marhala, roll):
-    try:
-        result = Result.objects.get(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
+    result = Result.objects.filter(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
+    if result.exists():
         response = {
             "status" : True,
-            "message" : "Succeess",
-            "data" : result.as_json()
+            "message" : "grabbed from database",
+            "data" : result.first().as_json()
         }
         return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
+    else:
+        try:
+            result_string = get_result_from_befaq_server(exam_year, marhala, roll)
+            new_result = Result(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
+            new_result.result = result_string
+            new_result.save()
 
-    except Exception as e:
-        response = {
-            "status" : False,
-            "message" : str(e)
-        }
-    return JsonResponse(response, status=404)
+            response = {
+                "status": True,
+                "message": "grabbed from befaq server",
+                "data": new_result.as_json()
+            }
+            return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
+
+        except Exception as e:
+            response = {
+                "status" : False,
+                "message" : str(e)
+            }
+        return JsonResponse(response, status=404)
 
 
 def index(request):

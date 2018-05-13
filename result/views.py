@@ -167,9 +167,7 @@ def get_result(request, exam_year, marhala, roll):
     result = Result.objects.filter(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
     if result.exists():
         response = {
-            "status" : True,
-            "message" : "grabbed from database",
-            "data" : result.first().as_json()
+            "messages": [{"text": result.first().as_json()}]
         }
         return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
     else:
@@ -181,9 +179,7 @@ def get_result(request, exam_year, marhala, roll):
                 new_result.save()
 
                 response = {
-                    "status": True,
-                    "message": "grabbed from befaq server",
-                    "data": new_result.as_json()
+                    "messages": [{"text": new_result.as_json()}]
                 }
                 return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
 
@@ -193,7 +189,7 @@ def get_result(request, exam_year, marhala, roll):
 
         response = {
             "status" : False,
-            "message" : "no result found"
+            "messages": [{"text": "result not found"}]
         }
         return JsonResponse(response, status=404)
 

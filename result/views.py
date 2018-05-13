@@ -207,7 +207,6 @@ def get_result(request, exam_year, marhala, roll):
             print(e)
 
         response = {
-            "status": False,
             "messages": [{"text": "result not found"}]
         }
         return JsonResponse(response, status=404)

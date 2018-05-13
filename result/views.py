@@ -186,7 +186,7 @@ def get_result(request, exam_year, marhala, roll):
     result = Result.objects.filter(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
     if result.exists():
         response = {
-            "messages": [{"text": result.first().as_json()}]
+            "messages": [{"text": result.first().result}]
         }
         return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
     else:
@@ -198,7 +198,7 @@ def get_result(request, exam_year, marhala, roll):
                 new_result.save()
 
                 response = {
-                    "messages": [{"text": new_result.as_json()}]
+                    "messages": [{"text": new_result.result}]
                 }
                 return HttpResponse(json.dumps(response, ensure_ascii=False), content_type="application/json")
 

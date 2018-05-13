@@ -175,7 +175,7 @@ MARHALA_MAP = {'t': 1,
 
 
 def get_result(request, exam_year, marhala, roll):
-    marhala = MARHALA_MAP.get((str(marhala).lower()))
+    marhala = MARHALA_MAP.get(str(marhala).lower())
     if not marhala:
         response = {
             "status": False,

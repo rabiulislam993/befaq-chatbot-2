@@ -13,9 +13,9 @@ from .models import EXAM_YEARS, MARHALA, Result, Proxy
 
 from result.bijoy_to_unicode import convertBijoyToUnicode
 
-
 executor = ThreadPoolExecutor(10)
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
 
 def get_result_from_befaq_server(exam_year, marhala, roll):
@@ -163,7 +163,26 @@ def grab_results(request):
     return render(request, 'result/grab_results.html', context)
 
 
+MARHALA_MAP = {'t': 1,
+               'f': 2,
+               's': 3,
+               #  number  4 missing in wifaqresult website!
+               'm': 5,
+               'i': 6,
+               'h': 7,
+               'q': 8,
+               }
+
+
 def get_result(request, exam_year, marhala, roll):
+    marhala = MARHALA_MAP.get((str(marhala).lower()))
+    if not marhala:
+        response = {
+            "status": False,
+            "messages": [{"text": "Marhala Name Does Not Matched!\nType Help To Read More."}]
+        }
+        return JsonResponse(response, status=404)
+
     result = Result.objects.filter(exam_year=exam_year, student_marhala=marhala, student_roll=roll)
     if result.exists():
         response = {
@@ -188,7 +207,7 @@ def get_result(request, exam_year, marhala, roll):
             print(e)
 
         response = {
-            "status" : False,
+            "status": False,
             "messages": [{"text": "result not found"}]
         }
         return JsonResponse(response, status=404)

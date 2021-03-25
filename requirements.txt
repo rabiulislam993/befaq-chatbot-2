@@ -17,7 +17,7 @@ psycopg2==2.7.4
 pyjsparser==2.5.2
 PySocks==1.6.8
 pytz==2018.4
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.4
 slimit==0.8.1
 SocksiPy-branch==1.1
